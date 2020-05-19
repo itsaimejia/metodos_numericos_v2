@@ -2,26 +2,30 @@
 #include <stdlib.h>
 #include<math.h>
 
+# define M_PI           3.14159265358979323846  /* pi */
+
 main(){
-	float y=0,yp=0,delta=0;
-	float x=1;
-	float epsi=0.001;
+	float y=0,yp=0,delta=0,y2=0;
+	float x=M_PI/4;
+	float epsi=0.000001;
 	int nmi=100;
 	
-	int i=0;
+	int i=1;
 	
 	do{
-		y= x-4*sin(x);
-		yp= 1-4*cos(x);
-		y=x-(y/yp);
-		delta=fabs((y-x)/y);
-		i++;
+		y= cos(x);
+		yp= -sin(x)-1;
+		y2=x-(y/yp);
+		delta=fabs((y2-x)/y2);
+		printf("it: %d \ny= %f \ny'= %f \n y= %f\ndelta= %f\n",i,y,yp,y2,delta);
 		if(delta<=epsi){
-			printf("%d Una aprox a la raiz es: %f",i,y);
+			printf("%d Una aprox a la raiz es: %f",i,y2);
 			break;
 		}
+		i++;
 		
-		x=y;
+		x=y2;
+		printf("x= %f\n",x);
 	}while(i<=nmi);
 	
 	if(i>=nmi)
