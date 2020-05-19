@@ -13,19 +13,26 @@ main(){
 	int i=1;
 	
 	do{
-		y= cos(x);
+		y= cos(x)-x;
 		yp= -sin(x)-1;
 		y2=x-(y/yp);
 		delta=fabs((y2-x)/y2);
-		printf("it: %d \ny= %f \ny'= %f \n y= %f\ndelta= %f\n",i,y,yp,y2,delta);
+		printf("%i\n",i);
+		printf("y=cos(%.10f)=%.10f\n",x,y);
+		printf("yp= -sen(%.10f) -1= %.10f\n",x,yp);
+		printf("y=(%.10f) - (%.10f / %.10f)= %.10f\n",x,y,yp,y2);
+		printf("delta= abs((%.10f - %.10f) / %.10f)= %.10f\n",y2,x,y2,delta);
 		if(delta<=epsi){
-			printf("%d Una aprox a la raiz es: %f",i,y2);
+			printf("%.10f <= %.10f ? F\n",delta,epsi);
+			printf("%d Una aprox a la raiz es: %.10f\n",i,y2);
 			break;
+		}else{
+			printf("%.10f <= %.10f ? F\n",delta,epsi);
 		}
 		i++;
 		
 		x=y2;
-		printf("x= %f\n",x);
+		printf("x= %.10f\n",x);
 	}while(i<=nmi);
 	
 	if(i>=nmi)
